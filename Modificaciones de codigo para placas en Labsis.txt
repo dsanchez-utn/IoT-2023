@@ -1,0 +1,26 @@
+//Estas son las modificaciones que hay que hacer para usar el display y el sensor de temperatura de la placa que puden solicitar en Labsis.
+
+Display_Inicial_OLED_28x32_I2C
+Original:
+
+#include <Adafruit_SSD1306.h>
+
+Adafruit_SSD1306 display = Adafruit_SSD1306(SCREEN_WIDTH,SCREEN_HEIGHT, &Wire);
+
+display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+
+Modificaciones:
+#include <Adafruit_SH110X.h>
+
+Adafruit_SH1106G display = Adafruit_SH1106G(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire);
+
+display.begin(0x3C, true); // Address 0x3C default
+
+
+//Display_con_Sensor_HyT
+
+Original:
+DHT dht(DHT_PIN, DHT11);
+
+Modificación:
+DHT dht(DHT_PIN, DHT22);
